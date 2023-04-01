@@ -16,6 +16,7 @@
 		609BABA429D82C1D001972CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 609BABA229D82C1D001972CF /* LaunchScreen.storyboard */; };
 		609BABAE29D82CD0001972CF /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609BABAC29D82CD0001972CF /* Task+CoreDataProperties.swift */; };
 		609BABB029D82D4D001972CF /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609BABAF29D82D4D001972CF /* StorageManager.swift */; };
+		609BABBB29D859E2001972CF /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609BABBA29D859E2001972CF /* Dynamic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		609BABA529D82C1D001972CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		609BABAC29D82CD0001972CF /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		609BABAF29D82D4D001972CF /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		609BABBA29D859E2001972CF /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,8 @@
 		609BAB9329D82C1C001972CF /* TaskManager */ = {
 			isa = PBXGroup;
 			children = (
+				609BABB929D859D7001972CF /* Dynamic */,
+				609BABB729D8407E001972CF /* ViewModel */,
 				609BABB629D83E6A001972CF /* View */,
 				609BABB529D83E61001972CF /* DataB */,
 				609BABB429D83E4A001972CF /* Utils */,
@@ -98,6 +102,21 @@
 				609BAB9829D82C1C001972CF /* HomeViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		609BABB729D8407E001972CF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		609BABB929D859D7001972CF /* Dynamic */ = {
+			isa = PBXGroup;
+			children = (
+				609BABBA29D859E2001972CF /* Dynamic.swift */,
+			);
+			path = Dynamic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +193,7 @@
 				609BAB9929D82C1C001972CF /* HomeViewController.swift in Sources */,
 				609BAB9529D82C1C001972CF /* AppDelegate.swift in Sources */,
 				609BAB9F29D82C1C001972CF /* TaskManager.xcdatamodeld in Sources */,
+				609BABBB29D859E2001972CF /* Dynamic.swift in Sources */,
 				609BABB029D82D4D001972CF /* StorageManager.swift in Sources */,
 				609BABAE29D82CD0001972CF /* Task+CoreDataProperties.swift in Sources */,
 				609BAB9729D82C1C001972CF /* SceneDelegate.swift in Sources */,
