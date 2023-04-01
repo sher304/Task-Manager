@@ -76,5 +76,27 @@ public final class StorageManager: NSObject{
         }
         appDelegate.saveContext()
     }
+    
+    //MARK: Delete All
+    public func deleteAll(){
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        do{
+            let tasks = try? context.fetch(fetchRequest) as? [Task]
+            tasks?.forEach{ context.delete($0) }
+        }
+        appDelegate.saveContext()
+    }
+    
+    //MARK: Delete By Id
+    public func deleteById(id: Int16){
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        do{
+            guard let tasks = try? context.fetch(fetchRequest) as? [Task],
+                  let task = tasks.first else { return }
+            context.delete(task)
+        }
+        appDelegate.saveContext()
+    }
+    
 }
- 
+
