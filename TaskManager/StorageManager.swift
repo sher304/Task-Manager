@@ -43,4 +43,22 @@ public final class StorageManager: NSObject{
         //MARK: Save To DB
         appDelegate.saveContext()
     }
+    
+    //MARK: Read All
+    public func readTasks() -> [Task]? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        do{
+            return try? context.fetch(fetchRequest) as? [Task] ?? []
+        }
+    }
+    
+    //MARK: Read Single By Id
+    public func readTask(id: Int16) -> Task? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        do{
+            let tasks = try? context.fetch(fetchRequest) as? [Task]
+            return tasks?.first(where: {$0.id == id})
+        }
+    }
 }
+ 
