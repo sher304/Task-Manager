@@ -17,6 +17,7 @@ class TabViewController: UITabBarController {
         button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.tintColor = .white
         button.contentMode = .scaleToFill
+        button.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -26,6 +27,7 @@ class TabViewController: UITabBarController {
         button.setImage(UIImage(systemName: "calendar"), for: .normal)
         button.contentMode = .scaleToFill
         button.addTarget(self, action: #selector(middleButtonTapped), for: .touchUpInside)
+        button.tintColor = .gray
         return button
     }()
     
@@ -39,8 +41,8 @@ class TabViewController: UITabBarController {
     private func generateTabBar(){
         viewControllers = [
             generateVC(vc: HomeViewController(), image: UIImage(systemName: "house.fill"), title: "Home"),
-            generateVC(vc: CalendarViewController(), image: UIImage(systemName: ""), title: ""),
-            
+            generateVC(vc: CalendarViewController(), image: UIImage(), title: ""),
+            generateVC(vc: TaskViewController(), image: UIImage(), title: "")
         ]
     }
     
@@ -58,7 +60,7 @@ class TabViewController: UITabBarController {
         
         let roundLayer = CAShapeLayer()
         
-        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionX, y: positionY - 7, width: width, height: height), cornerRadius: height / 2)
+        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionX, y: positionY - 5, width: width, height: height), cornerRadius: height / 2)
         
         roundLayer.path = bezierPath.cgPath
         
@@ -66,7 +68,7 @@ class TabViewController: UITabBarController {
         tabBar.itemWidth = width / 5
         roundLayer.fillColor = UIColor(red: 248/255, green: 248/255, blue: 250/255, alpha: 1).cgColor
         tabBar.itemSpacing = 50
-        tabBar.itemPositioning = .automatic
+        tabBar.itemPositioning = .centered
         tabBar.tintColor = .black
         tabBar.unselectedItemTintColor = .gray
         tabBar.addSubview(createNewTaskButton)
@@ -76,7 +78,14 @@ class TabViewController: UITabBarController {
     //MARK: Middle Button Index
     @objc func middleButtonTapped(){
         selectedIndex = 1
+        
     }
+    
+    //MARK: Create Button Index
+    @objc func createButtonTapped(){
+        selectedIndex = 2
+    }
+    
 }
 
 
