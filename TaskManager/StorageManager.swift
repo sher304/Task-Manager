@@ -60,5 +60,21 @@ public final class StorageManager: NSObject{
             return tasks?.first(where: {$0.id == id})
         }
     }
+    
+    //MARK: Update
+    public func updateTask(id: Int16, newTitle: String?, newDesciption: String?,
+                           newDateStart: Int16, newDateEnd: Int16, newDay: Int16){
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        do{
+            guard let tasks = try? context.fetch(fetchRequest) as? [Task],
+                  let task = tasks.first(where: {$0.id == id}) else { return }
+            task.title = newTitle
+            task.descr = newDesciption
+            task.dateStart = newDateStart
+            task.dateEnd = newDateEnd
+            task.day = newDay
+        }
+        appDelegate.saveContext()
+    }
 }
  
