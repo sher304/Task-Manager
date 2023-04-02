@@ -7,5 +7,6 @@ target 'TaskManager' do
 
   # Pods for TaskManager
 	pod 'SnapKit'
+	
 
 end
