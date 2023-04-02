@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FSCalendar
 
 class HomeViewController: UIViewController {
     
@@ -28,7 +29,6 @@ class HomeViewController: UIViewController {
     
     private lazy var searchBar: UISearchBar = {
         let searchB = UISearchBar()
-        searchB.delegate = self
         searchB.layer.borderWidth = 0.5
         searchB.layer.borderColor = UIColor.black.cgColor
         searchB.backgroundColor = .white
@@ -38,6 +38,13 @@ class HomeViewController: UIViewController {
         searchB.searchTextField.backgroundColor = .white
         searchB.placeholder = "Search"
         return searchB
+    }()
+    
+    private lazy var calendarV: FSCalendar = {
+        let calendarV = FSCalendar()
+        calendarV.scope = .week
+        calendarV.headerHeight = 0
+        return calendarV
     }()
     
     private lazy var tasksTable: UITableView = {
@@ -79,10 +86,18 @@ class HomeViewController: UIViewController {
             make.top.equalTo(profileImage.snp.bottom).offset(19)
         }
         
+        view.addSubview(calendarV)
+        calendarV.snp.makeConstraints { make in
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
+            make.top.equalTo(searchBar.snp.bottom).offset(35)
+            make.height.equalTo(120)
+        }
+        
         view.addSubview(tasksTable)
         tasksTable.snp.makeConstraints { make in
             make.leading.bottom.trailing.equalToSuperview()
-            make.top.equalTo(searchBar.snp.bottom).offset(30)
+            make.top.equalTo(calendarV.snp.bottom)
         }
     }
 }
@@ -103,12 +118,5 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
-    
-    
-    
 }
 
-extension HomeViewController: UISearchBarDelegate{
-    
-    
-}
