@@ -44,6 +44,8 @@ class HomeViewController: UIViewController {
         let calendarV = FSCalendar()
         calendarV.scope = .week
         calendarV.headerHeight = 0
+        calendarV.delegate = self
+        calendarV.dataSource = self
         return calendarV
     }()
     
@@ -120,3 +122,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
+
+extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
+
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM-yyyy"
+        let result = formatter.string(from: date)
+        print(result)
+    }
+    
+}
