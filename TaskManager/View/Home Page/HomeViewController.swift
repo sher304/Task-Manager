@@ -11,6 +11,10 @@ import FSCalendar
 
 class HomeViewController: UIViewController {
     
+    private lazy var viewModel: HomeViewModel = {
+        return HomeViewModel()
+    }()
+    
     private lazy var myTaskLabel: UILabel  = {
         let label = UILabel()
         label.text = "My task"
@@ -61,6 +65,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupconstraints()
+        bindViewModel()
+    }
+    
+    private func bindViewModel(){
+        viewModel.viewDidLoad()
+        viewModel.task.bind { _ in
+            print("Hello view")
+        }
     }
     
     private func setupconstraints(){
