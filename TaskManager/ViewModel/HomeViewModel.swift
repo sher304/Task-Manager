@@ -8,10 +8,17 @@
 import Foundation
 
 protocol HomeViewModelDelegate {
-    
+    func viewDidLoad()
 }
 
 class HomeViewModel: HomeViewModelDelegate{
     
+    var task = Dynamic(Task())
+ 
+    var storeManager: StorageManager?
+    
+    func viewDidLoad(){
+        print("hello world")
+    }
     
 }
