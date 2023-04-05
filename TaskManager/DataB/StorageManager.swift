@@ -12,7 +12,7 @@ import CoreData
 
 public final class StorageManager: NSObject{
     
-    private static let shared = StorageManager()
+    static let shared = StorageManager()
     private override init() {}
     
     private var appDelegate: AppDelegate{
@@ -26,7 +26,8 @@ public final class StorageManager: NSObject{
     
     //MARK: CREATE
     public func createTask(id: Int16, title: String?, description: String?,
-                           dateStart: Int16, dateEnd: Int16, day: Int16){
+                           hourStart: Int16, hourEnd: Int16, day: Int16){
+        print("Task")
         
         //MARK: Entity
         guard let taskEntityDescription = NSEntityDescription.entity(forEntityName: "Task", in: context) else { return }
@@ -37,11 +38,12 @@ public final class StorageManager: NSObject{
         task.title = title
         task.descr = description
         task.day = day
-        task.dateStart = dateStart
-        task.dateEnd = dateEnd
+        task.hourStart = hourStart
+        task.hourEnd = hourEnd
         
         //MARK: Save To DB
         appDelegate.saveContext()
+        print("saved", title, description)
     }
     
     //MARK: Read All
@@ -61,17 +63,25 @@ public final class StorageManager: NSObject{
         }
     }
     
+    public func readTaskClosure(completion: @escaping([Task]) -> Void){
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        do{
+            guard let fetchedData = try? context.fetch(fetchRequest) as? [Task] ?? [] else { return }
+            completion(fetchedData)
+        }
+    }
+    
     //MARK: Update
     public func updateTask(id: Int16, newTitle: String?, newDesciption: String?,
-                           newDateStart: Int16, newDateEnd: Int16, newDay: Int16){
+                           newHourStart: Int16, newHourEnd: Int16, newDay: Int16){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         do{
             guard let tasks = try? context.fetch(fetchRequest) as? [Task],
                   let task = tasks.first(where: {$0.id == id}) else { return }
             task.title = newTitle
             task.descr = newDesciption
-            task.dateStart = newDateStart
-            task.dateEnd = newDateEnd
+            task.hourStart = newHourStart
+            task.hourEnd = newHourEnd
             task.day = newDay
         }
         appDelegate.saveContext()

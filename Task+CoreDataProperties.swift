@@ -19,8 +19,8 @@ extension Task {
     @NSManaged public var title: String?
     @NSManaged public var descr: String?
     @NSManaged public var id: Int16
-    @NSManaged public var dateStart: Int16
-    @NSManaged public var dateEnd: Int16
+    @NSManaged public var hourStart: Int16
+    @NSManaged public var hourEnd: Int16
     @NSManaged public var day: Int16
 
 }
