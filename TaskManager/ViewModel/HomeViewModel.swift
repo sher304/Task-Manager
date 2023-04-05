@@ -13,7 +13,7 @@ protocol HomeViewModelDelegate {
 
 class HomeViewModel: HomeViewModelDelegate{
     
-    var task = Dynamic(Task())
+    var task = Dynamic(TaskModel(title: "", desc: "", id: Int(), dateStart: Int(), dateEnd: Int(), day: Int()))
  
     var storeManager: StorageManager?
     
