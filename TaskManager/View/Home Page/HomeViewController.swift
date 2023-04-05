@@ -72,8 +72,7 @@ class HomeViewController: UIViewController {
     private func bindViewModel(){
         viewModel.viewDidLoad()
         viewModel.task.bind { data in
-            print(data.title)
-            print("binder")
+            
         }
     }
     

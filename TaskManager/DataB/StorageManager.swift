@@ -63,6 +63,7 @@ public final class StorageManager: NSObject{
         }
     }
     
+    //MARK: Read Closure
     public func readTaskClosure(completion: @escaping([Task]) -> Void){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         do{

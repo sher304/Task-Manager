@@ -13,14 +13,14 @@ protocol HomeViewModelDelegate {
 }
 
 class HomeViewModel: HomeViewModelDelegate{
-    
-    var task = Dynamic(TaskModel(title: "", desc: "", id: Int(), dateStart: Int(), dateEnd: Int(), day: Int()))
+
+    var task = Dynamic([Task]())
     
     var storeManager = StorageManager.shared
     
     func viewDidLoad(){
         storeManager.readTaskClosure(completion: { data in
-            print(data.first?.title)
+            self.task.value = data
         })
         
     }
