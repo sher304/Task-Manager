@@ -66,13 +66,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupconstraints()
         bindViewModel()
-//        saveData()
     }
     
     private func bindViewModel(){
         viewModel.viewDidLoad()
         viewModel.task.bind { data in
-            
+            print(data)
         }
     }    
     
