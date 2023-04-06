@@ -66,20 +66,14 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupconstraints()
         bindViewModel()
-//        saveData()
     }
     
     private func bindViewModel(){
         viewModel.viewDidLoad()
         viewModel.task.bind { data in
-            
+            print(data)
         }
-    }
-    
-    private func saveData(){
-        viewModel.saveTask("Home Work", decsiption: "Do home work", id: 0, hourStart: 12, hourEnd: 14, day: 20)
-        print("Saved")
-    }
+    }    
     
     private func setupconstraints(){
         view.backgroundColor = .white
