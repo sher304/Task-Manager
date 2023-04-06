@@ -10,6 +10,10 @@ import SnapKit
 
 class TaskViewController: UIViewController {
     
+    private lazy var createTaskViewModel: CreateTaskViewModel = {
+        return CreateTaskViewModel()
+    }()
+    
     private lazy var containerOFTask: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray5
@@ -80,6 +84,7 @@ class TaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
+        createTaskViewModel.viewDidLoad()
     }
     
     private func setupConstraints(){
@@ -135,16 +140,19 @@ class TaskViewController: UIViewController {
         
     }
     
+    private func binder(){
+        
+    }
     
     @objc func createTaskTapped(){
         guard let title = titleField.text else { return }
         guard let description = descriptionField.text else { return }
         
+        
         let components = Calendar.current.dateComponents([.day, .month, .hour, .minute], from: .now)
         if let day = components.day, let month = components.month,
            let hour = components.hour, let minute = components.minute{
-            print("\(day) \(month) \(hour):\(minute)")
-            print(title, description)
+            createTaskViewModel.createTask(0, title, description, hour, minute, day)
         }
     }
 }

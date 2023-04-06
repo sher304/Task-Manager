@@ -74,12 +74,7 @@ class HomeViewController: UIViewController {
         viewModel.task.bind { data in
             
         }
-    }
-    
-    private func saveData(){
-        viewModel.saveTask("Home Work", decsiption: "Do home work", id: 0, hourStart: 12, hourEnd: 14, day: 20)
-        print("Saved")
-    }
+    }    
     
     private func setupconstraints(){
         view.backgroundColor = .white

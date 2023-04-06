@@ -20,6 +20,7 @@
 		609BABBB29D859E2001972CF /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609BABBA29D859E2001972CF /* Dynamic.swift */; };
 		609BABBD29D85A8A001972CF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609BABBC29D85A8A001972CF /* HomeViewModel.swift */; };
 		60A7B6E729DD2C5700F07FE4 /* Task Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A7B6E629DD2C5700F07FE4 /* Task Model.swift */; };
+		60A7B6EB29DE6B7300F07FE4 /* CreateTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A7B6EA29DE6B7300F07FE4 /* CreateTaskViewModel.swift */; };
 		60F22AC629D8AA60001471AE /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F22AC529D8AA60001471AE /* TabViewController.swift */; };
 		60F22AC929D8B090001471AE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F22AC829D8B090001471AE /* CalendarViewController.swift */; };
 		60F22ACC29D8B320001471AE /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F22ACB29D8B320001471AE /* TaskViewController.swift */; };
@@ -43,6 +44,7 @@
 		609BABBA29D859E2001972CF /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		609BABBC29D85A8A001972CF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		60A7B6E629DD2C5700F07FE4 /* Task Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task Model.swift"; sourceTree = "<group>"; };
+		60A7B6EA29DE6B7300F07FE4 /* CreateTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewModel.swift; sourceTree = "<group>"; };
 		60F22AC529D8AA60001471AE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		60F22AC829D8B090001471AE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		60F22ACB29D8B320001471AE /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				609BABBC29D85A8A001972CF /* HomeViewModel.swift */,
+				60A7B6EA29DE6B7300F07FE4 /* CreateTaskViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				609BAB9F29D82C1C001972CF /* TaskManager.xcdatamodeld in Sources */,
 				60F22AC929D8B090001471AE /* CalendarViewController.swift in Sources */,
 				6000F80029D88AFD00952C58 /* TaskTableCell.swift in Sources */,
+				60A7B6EB29DE6B7300F07FE4 /* CreateTaskViewModel.swift in Sources */,
 				60A7B6E729DD2C5700F07FE4 /* Task Model.swift in Sources */,
 				60F22ACC29D8B320001471AE /* TaskViewController.swift in Sources */,
 				609BABBD29D85A8A001972CF /* HomeViewModel.swift in Sources */,

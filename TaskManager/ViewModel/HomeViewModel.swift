@@ -7,12 +7,7 @@
 
 import Foundation
 
-protocol HomeViewModelDelegate {
-    func viewDidLoad()
-    func saveTask(_ title: String, decsiption: String, id: Int, hourStart: Int, hourEnd: Int, day: Int)
-}
-
-class HomeViewModel: HomeViewModelDelegate{
+class HomeViewModel{
 
     var task = Dynamic([Task]())
     
@@ -23,12 +18,5 @@ class HomeViewModel: HomeViewModelDelegate{
             self.task.value = data
         })
         
-    }
-    
-    func saveTask(_ title: String, decsiption: String, id: Int, hourStart: Int, hourEnd: Int, day: Int){
-        storeManager.createTask(id: Int16(id), title: title, description: decsiption, hourStart: Int16(hourStart), hourEnd: Int16(hourEnd), day: Int16(day))
-    }
-    
-    
-    
+    } 
 }
