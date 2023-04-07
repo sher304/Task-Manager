@@ -21,6 +21,6 @@ class CreateTaskViewModel{
     }
     
     func createTask( _ title: String, _ description: String,_ hour: Int,_ minute: Int,_ day: Int){
-        
+        storageManager.createTask(id: 0, title: "title", description: "desc", hourStart: 4, hourEnd: 4, day: 4)
     }
 }
