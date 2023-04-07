@@ -10,7 +10,9 @@ import SnapKit
 
 class TaskViewController: UIViewController {
     
-    private lazy var createTaskViewModel = CreateTaskViewModel.shared
+    private lazy var createTaskViewModel: CreateTaskViewModel = {
+        return CreateTaskViewModel()
+    }()
     
     private lazy var containerOFTask: UIView = {
         let view = UIView()
@@ -79,6 +81,8 @@ class TaskViewController: UIViewController {
         return button
     }()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
@@ -124,10 +128,10 @@ class TaskViewController: UIViewController {
         
         containerOFTask.addSubview(datePicker)
         datePicker.snp.makeConstraints { make in
-            make.top.equalTo(descriptionField.snp.bottom).offset(90)
+            make.top.equalTo(descriptionField.snp.bottom).offset(80)
             make.centerX.equalToSuperview()
         }
-        
+
         containerOFTask.addSubview(createTaskButton)
         createTaskButton.snp.makeConstraints { make in
             make.leading.equalTo(50)
@@ -135,7 +139,6 @@ class TaskViewController: UIViewController {
             make.height.equalTo(40)
             make.bottom.equalTo(-30)
         }
-        
     }
     
     private func binder(){
@@ -150,7 +153,26 @@ class TaskViewController: UIViewController {
         let components = Calendar.current.dateComponents([.day, .month, .hour, .minute], from: .now)
         if let day = components.day, let month = components.month,
            let hour = components.hour, let minute = components.minute{
-            createTaskViewModel.createTask(0, title, description, hour, minute, day)
+            createTaskViewModel.createTask(title, description, hour, minute, day)
         }
     }
+}
+
+extension TaskViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0 {
+            return 10
+        } else {
+            return 100
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return row.description
+    }
+    
 }
