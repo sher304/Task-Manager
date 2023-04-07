@@ -41,6 +41,13 @@ class TaskTableCell: UITableViewCell{
             setupconstraint()
     }
     
+    public func fillData(title: String, numberTask: String){
+        DispatchQueue.main.async {
+            self.taskTitle.text = title
+            self.taskNumber.text = numberTask
+        }
+    }
+    
     private func setupconstraint(){
         contentView.addSubview(taskNumber)
         taskNumber.snp.makeConstraints { make in
