@@ -17,6 +17,6 @@ class HomeViewModel{
         storeManager.readTaskClosure(completion: { data in
             self.task.value = data
         })
-        
+        print(storeManager.readTasks())
     } 
 }

@@ -10,8 +10,6 @@ import Foundation
 
 class CreateTaskViewModel{
     
-    static let shared = CreateTaskViewModel()
-    
     let storageManager = StorageManager.shared
     
     var taskData = Dynamic([Task]())
@@ -22,8 +20,7 @@ class CreateTaskViewModel{
         }
     }
     
-    func createTask(_ id:Int, _ title: String, _ description: String,_ hour: Int,_ Minute: Int,_ day: Int){
-        storageManager.createTask(id: Int16(id), title: title, description: description, hourStart: Int16(hour), hourEnd: Int16(Minute), day: Int16(day))
+    func createTask( _ title: String, _ description: String,_ hour: Int,_ minute: Int,_ day: Int){
+        
     }
-    
 }
