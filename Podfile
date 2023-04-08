@@ -8,5 +8,5 @@ target 'TaskManager' do
   # Pods for TaskManager
 	pod 'SnapKit'
 	pod 'FSCalendar'	
-
+	pod 'RxSwift'
 end

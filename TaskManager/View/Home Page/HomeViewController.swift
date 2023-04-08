@@ -70,9 +70,8 @@ class HomeViewController: UIViewController {
     
     private func bindViewModel(){
         viewModel.viewDidLoad()
-        viewModel.task.bind { data in
+        viewModel.task.bind { _ in
             DispatchQueue.main.async {
-                print(data.map({$0.id}), "data home view")
                 self.tasksTable.reloadData()
             }
         }
@@ -130,7 +129,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         cell.separatorInset = UIEdgeInsets(top: 0, left: 35, bottom: 0, right: 115)
         cell.selectionStyle = .none
         let data = viewModel.task.value[indexPath.row]
-        cell.fillData(title: data.title ?? "", numberTask: indexPath.row.description)
+        cell.fillData(title: data.title ?? "", numberTask: data.id.description)
         return cell
     }
     
