@@ -16,14 +16,15 @@ class Dynamic<T>{
     func bind(_ listener: Listener?){
         self.listener = listener
     }
+    
     var value: T{
         didSet{
-            self.listener?(value)
+            listener?(value)
         }
     }
     
     init(_ v: T){
-        self.value = v
+        value = v
     }
     
 }

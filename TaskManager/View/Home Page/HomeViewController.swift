@@ -70,10 +70,12 @@ class HomeViewController: UIViewController {
     
     private func bindViewModel(){
         viewModel.viewDidLoad()
-        viewModel.task.bind { data in
-            print(data)
+        viewModel.task.bind { _ in
+            DispatchQueue.main.async {
+                self.tasksTable.reloadData()
+            }
         }
-    }    
+    }
     
     private func setupconstraints(){
         view.backgroundColor = .white
@@ -119,13 +121,15 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return viewModel.task.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = TaskTableCell()
         cell.separatorInset = UIEdgeInsets(top: 0, left: 35, bottom: 0, right: 115)
         cell.selectionStyle = .none
+        let data = viewModel.task.value[indexPath.row]
+        cell.fillData(title: data.title ?? "", numberTask: data.id.description)
         return cell
     }
     
@@ -136,7 +140,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
 
 
 extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
-
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM-yyyy"

@@ -6,21 +6,23 @@
 //
 
 import Foundation
-
+import RxSwift
 
 class CreateTaskViewModel{
     
     let storageManager = StorageManager.shared
     
-    var taskData = Dynamic([Task]())
-    
-    func viewDidLoad(){
-        storageManager.readTaskClosure { taskData in
-            self.taskData.value = taskData
-        }
-    }
-    
     func createTask( _ title: String, _ description: String,_ hour: Int,_ minute: Int,_ day: Int){
-        storageManager.createTask(id: 0, title: "title", description: "desc", hourStart: 4, hourEnd: 4, day: 4)
+//        let amountTask = (checkAmountOfTask() ?? 0) + 1
+//        storageManager.createTask(id: Int16(amountTask), title: title, description: description, hourStart: Int16(hour), hourEnd: Int16(minute), day: Int16(day))
+//
+//        print(storageManager.readTasks())
+//        print(storageManager.readTasks().map({$0}))
     }
+    
+    func checkAmountOfTask() -> Int?{
+        let dataTask = storageManager.readTasks()?.count
+        return dataTask
+    }
+    
 }

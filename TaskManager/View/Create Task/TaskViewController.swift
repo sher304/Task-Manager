@@ -86,7 +86,6 @@ class TaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
-        createTaskViewModel.viewDidLoad()
     }
     
     private func setupConstraints(){
@@ -156,23 +155,4 @@ class TaskViewController: UIViewController {
             createTaskViewModel.createTask(title, description, hour, minute, day)
         }
     }
-}
-
-extension TaskViewController: UIPickerViewDelegate, UIPickerViewDataSource{
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if component == 0 {
-            return 10
-        } else {
-            return 100
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return row.description
-    }
-    
 }

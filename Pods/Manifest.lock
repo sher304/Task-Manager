@@ -1,20 +1,24 @@
 PODS:
   - FSCalendar (2.8.4)
+  - RxSwift (6.5.0)
   - SnapKit (5.6.0)
 
 DEPENDENCIES:
   - FSCalendar
+  - RxSwift
   - SnapKit
 
 SPEC REPOS:
   trunk:
     - FSCalendar
+    - RxSwift
     - SnapKit
 
 SPEC CHECKSUMS:
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: cb067feff22baa443f480a7cc28c7cf9aadf23a0
+PODFILE CHECKSUM: 2dcc92b38a0ed8021ce9f28c5223570f278e3f59
 
 COCOAPODS: 1.12.0

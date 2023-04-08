@@ -8,7 +8,7 @@
 import Foundation
 
 class HomeViewModel{
-
+    
     var task = Dynamic([Task]())
     
     var storeManager = StorageManager.shared
@@ -17,6 +17,5 @@ class HomeViewModel{
         storeManager.readTaskClosure(completion: { data in
             self.task.value = data
         })
-        print(storeManager.readTasks())
-    } 
+    }
 }
