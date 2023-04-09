@@ -45,6 +45,7 @@
 		609BABBC29D85A8A001972CF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		60A7B6E629DD2C5700F07FE4 /* Task Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task Model.swift"; sourceTree = "<group>"; };
 		60A7B6EA29DE6B7300F07FE4 /* CreateTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewModel.swift; sourceTree = "<group>"; };
+		60B84CF829E1B80B00780255 /* RxSwiftPractice.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RxSwiftPractice.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		60F22AC529D8AA60001471AE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		60F22AC829D8B090001471AE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		60F22ACB29D8B320001471AE /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		609BAB8829D82C1C001972CF = {
 			isa = PBXGroup;
 			children = (
+				60B84CF829E1B80B00780255 /* RxSwiftPractice.playground */,
 				609BABAC29D82CD0001972CF /* Task+CoreDataProperties.swift */,
 				609BAB9329D82C1C001972CF /* TaskManager */,
 				609BAB9229D82C1C001972CF /* Products */,
