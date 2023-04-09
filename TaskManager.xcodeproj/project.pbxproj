@@ -21,6 +21,7 @@
 		609BABBD29D85A8A001972CF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609BABBC29D85A8A001972CF /* HomeViewModel.swift */; };
 		60A7B6E729DD2C5700F07FE4 /* Task Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A7B6E629DD2C5700F07FE4 /* Task Model.swift */; };
 		60A7B6EB29DE6B7300F07FE4 /* CreateTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A7B6EA29DE6B7300F07FE4 /* CreateTaskViewModel.swift */; };
+		60B84CFB29E312A900780255 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B84CFA29E312A800780255 /* Helpers.swift */; };
 		60F22AC629D8AA60001471AE /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F22AC529D8AA60001471AE /* TabViewController.swift */; };
 		60F22AC929D8B090001471AE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F22AC829D8B090001471AE /* CalendarViewController.swift */; };
 		60F22ACC29D8B320001471AE /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F22ACB29D8B320001471AE /* TaskViewController.swift */; };
@@ -45,7 +46,9 @@
 		609BABBC29D85A8A001972CF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		60A7B6E629DD2C5700F07FE4 /* Task Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task Model.swift"; sourceTree = "<group>"; };
 		60A7B6EA29DE6B7300F07FE4 /* CreateTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewModel.swift; sourceTree = "<group>"; };
-		60B84CF829E1B80B00780255 /* RxSwiftPractice.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RxSwiftPractice.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		60B84CF829E1B80B00780255 /* RxSwiftPracticeOperator.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RxSwiftPracticeOperator.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		60B84CF929E3126A00780255 /* SubjectRxSwift.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SubjectRxSwift.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		60B84CFA29E312A800780255 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		60F22AC529D8AA60001471AE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		60F22AC829D8B090001471AE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		60F22ACB29D8B320001471AE /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +88,9 @@
 		609BAB8829D82C1C001972CF = {
 			isa = PBXGroup;
 			children = (
-				60B84CF829E1B80B00780255 /* RxSwiftPractice.playground */,
+				60B84CF929E3126A00780255 /* SubjectRxSwift.playground */,
+				60B84CF829E1B80B00780255 /* RxSwiftPracticeOperator.playground */,
+				60B84CFA29E312A800780255 /* Helpers.swift */,
 				609BABAC29D82CD0001972CF /* Task+CoreDataProperties.swift */,
 				609BAB9329D82C1C001972CF /* TaskManager */,
 				609BAB9229D82C1C001972CF /* Products */,
@@ -334,6 +339,7 @@
 				609BABB029D82D4D001972CF /* StorageManager.swift in Sources */,
 				609BABAE29D82CD0001972CF /* Task+CoreDataProperties.swift in Sources */,
 				60F22AC629D8AA60001471AE /* TabViewController.swift in Sources */,
+				60B84CFB29E312A900780255 /* Helpers.swift in Sources */,
 				609BAB9729D82C1C001972CF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
