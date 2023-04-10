@@ -148,6 +148,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
             bindViewModel()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
 }
 
 extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
