@@ -10,9 +10,11 @@ import SnapKit
 
 class TaskViewController: UIViewController {
     
-    private lazy var createTaskViewModel: CreateTaskViewModel = {
-        return CreateTaskViewModel()
-    }()
+//    private lazy var createTaskViewModel: CreateTaskViewModel = {
+//        return CreateTaskViewModel()
+//    }()
+//
+    private lazy var createTaskViewModel = CreateTaskViewModel.shared
     
     private lazy var containerOFTask: UIView = {
         let view = UIView()
@@ -81,8 +83,6 @@ class TaskViewController: UIViewController {
         return button
     }()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
@@ -138,10 +138,6 @@ class TaskViewController: UIViewController {
             make.height.equalTo(40)
             make.bottom.equalTo(-30)
         }
-    }
-    
-    private func binder(){
-        
     }
     
     @objc func createTaskTapped(){
