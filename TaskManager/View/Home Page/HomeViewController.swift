@@ -151,6 +151,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
+        detailVC.fetchData(title: viewModel.task.value[indexPath.row].title)
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

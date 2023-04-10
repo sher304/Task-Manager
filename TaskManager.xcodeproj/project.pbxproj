@@ -23,6 +23,7 @@
 		60A7B6EB29DE6B7300F07FE4 /* CreateTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A7B6EA29DE6B7300F07FE4 /* CreateTaskViewModel.swift */; };
 		60B84CFB29E312A900780255 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B84CFA29E312A800780255 /* Helpers.swift */; };
 		60B84CFE29E3F18600780255 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B84CFD29E3F18600780255 /* DetailViewController.swift */; };
+		60B84D0029E3F3DF00780255 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B84CFF29E3F3DF00780255 /* DetailViewModel.swift */; };
 		60F22AC629D8AA60001471AE /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F22AC529D8AA60001471AE /* TabViewController.swift */; };
 		60F22AC929D8B090001471AE /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F22AC829D8B090001471AE /* CalendarViewController.swift */; };
 		60F22ACC29D8B320001471AE /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F22ACB29D8B320001471AE /* TaskViewController.swift */; };
@@ -51,6 +52,7 @@
 		60B84CF929E3126A00780255 /* SubjectRxSwift.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SubjectRxSwift.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		60B84CFA29E312A800780255 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		60B84CFD29E3F18600780255 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		60B84CFF29E3F3DF00780255 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		60F22AC529D8AA60001471AE /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		60F22AC829D8B090001471AE /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		60F22ACB29D8B320001471AE /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				609BABBC29D85A8A001972CF /* HomeViewModel.swift */,
 				60A7B6EA29DE6B7300F07FE4 /* CreateTaskViewModel.swift */,
+				60B84CFF29E3F3DF00780255 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60B84D0029E3F3DF00780255 /* DetailViewModel.swift in Sources */,
 				609BAB9929D82C1C001972CF /* HomeViewController.swift in Sources */,
 				609BAB9529D82C1C001972CF /* AppDelegate.swift in Sources */,
 				609BAB9F29D82C1C001972CF /* TaskManager.xcdatamodeld in Sources */,
