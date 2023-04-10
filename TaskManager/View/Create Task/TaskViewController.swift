@@ -9,11 +9,7 @@ import UIKit
 import SnapKit
 
 class TaskViewController: UIViewController {
-    
-//    private lazy var createTaskViewModel: CreateTaskViewModel = {
-//        return CreateTaskViewModel()
-//    }()
-//
+
     private lazy var createTaskViewModel = CreateTaskViewModel.shared
     
     private lazy var containerOFTask: UIView = {

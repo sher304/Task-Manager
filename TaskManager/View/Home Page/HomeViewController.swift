@@ -9,11 +9,13 @@ import UIKit
 import SnapKit
 import FSCalendar
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController{
     
     private lazy var viewModel: HomeViewModel = {
         return HomeViewModel()
     }()
+    
+    weak var delegate: DetailViewDelegate?
     
     private lazy var myTaskLabel: UILabel  = {
         let label = UILabel()
@@ -151,10 +153,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        detailVC.fetchData(title: viewModel.task.value[indexPath.row].title)
+        viewModel.updatedId(id: viewModel.task.value[indexPath.row].id, delegate: viewModel)
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
-    
 }
 
 extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
@@ -166,3 +167,4 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
     }
     
 }
+

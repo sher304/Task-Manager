@@ -10,8 +10,12 @@ import SnapKit
 
 class DetailViewController: UIViewController {
     
-    private lazy var taskTitle: UILabel = {
-        let label = UILabel()
+    private lazy var detailViewModel = DetailViewModel.shared
+    
+    weak var delegate: DetailViewModel?
+    
+    private lazy var taskTitle: UITextField = {
+        let label = UITextField()
         label.text = "Task Title"
         label.font = .systemFont(ofSize: 32, weight: .black)
         label.textColor = .white
@@ -25,7 +29,7 @@ class DetailViewController: UIViewController {
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return view
     }()
-
+    
     private lazy var contrainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray5
@@ -45,7 +49,7 @@ class DetailViewController: UIViewController {
         let textF = UITextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width / 1.5, height: 40))
         textF.placeholder = "Task Name"
         textF.autocorrectionType = .no
-        textF.font = .systemFont(ofSize: 22, weight: .bold)
+        textF.font = .systemFont(ofSize: 18, weight: .regular)
         
         var bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0.0, y: textF.frame.height - 1, width: textF.frame.width, height: 1.0)
@@ -55,18 +59,22 @@ class DetailViewController: UIViewController {
         return textF
     }()
     
+    private lazy var changeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Update", for: .normal)
+        button.backgroundColor = .orange
+        button.layer.cornerRadius = 14
+        button.layer.masksToBounds = true
+        button.tintColor = .white
+        button.titleLabel?.font = .systemFont(ofSize: 22, weight: .semibold)
+        button.addTarget(self, action: #selector(changeDidTapped), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupconstraints()
         
-    }
-    
-    
-    public func fetchData(title: String?){
-        DispatchQueue.main.async {
-            self.taskTitle.text = title
-            self.descriptionField.text = title
-        }
     }
     
     private func setupconstraints(){
@@ -77,7 +85,7 @@ class DetailViewController: UIViewController {
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(80)
-            make.height.equalTo(50)
+            make.height.equalTo(70)
         }
         
         view.addSubview(contrainerView)
@@ -85,7 +93,7 @@ class DetailViewController: UIViewController {
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
             make.top.equalTo(titleContainer.snp.bottom)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-80)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-250)
         }
         
         
@@ -93,7 +101,7 @@ class DetailViewController: UIViewController {
         taskTitle.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
         }
-
+        
         contrainerView.addSubview(datePicker)
         datePicker.snp.makeConstraints { make in
             make.centerY.centerX.equalToSuperview()
@@ -103,8 +111,27 @@ class DetailViewController: UIViewController {
         descriptionField.snp.makeConstraints { make in
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
-            make.top.equalTo(50)
+            make.top.equalTo(75)
         }
-
+        
+        contrainerView.addSubview(changeButton)
+        changeButton.snp.makeConstraints { make in
+            make.height.equalTo(50)
+            make.leading.equalTo(65)
+            make.trailing.equalTo(-65)
+            make.bottom.equalTo(-15)
+        }
+    }
+    
+    @objc func changeDidTapped(){
+        guard let title = taskTitle.text else { return }
+        guard let description = descriptionField.text else { return }
+        
+        
+        let components = Calendar.current.dateComponents([.day, .month, .hour, .minute], from: .now)
+        if let day = components.day, let month = components.month,
+           let hour = components.hour, let minute = components.minute{
+            detailViewModel.updateTask(title: title, description: description, hour: hour, minute: minute, day: day)
+        }
     }
 }

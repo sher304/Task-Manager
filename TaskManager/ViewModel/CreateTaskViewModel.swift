@@ -14,7 +14,7 @@ class CreateTaskViewModel{
     
     static let shared = CreateTaskViewModel()
     
-    weak var delegate: HomeViewDelegate?
+    weak var delegate: HomeViewModelDelegate?
     
     func createTask( _ title: String, _ description: String,_ hour: Int,_ minute: Int,_ day: Int){
         let amountTask = (checkAmountOfTask() ?? 0) + 1
