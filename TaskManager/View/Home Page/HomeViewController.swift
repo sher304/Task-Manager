@@ -144,7 +144,6 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM-yyyy"
         let result = formatter.string(from: date)
-        print(result)
     }
     
 }

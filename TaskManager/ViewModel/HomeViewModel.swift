@@ -7,15 +7,28 @@
 
 import Foundation
 
-class HomeViewModel{
+protocol HomeViewDelegate: AnyObject {
+    func taskDidSaved(task: [Task])
+    
+}
+
+class HomeViewModel: HomeViewDelegate{
     
     var task = Dynamic([Task]())
     
     var storeManager = StorageManager.shared
     
+    var createViewModel = CreateTaskViewModel.shared
+    
     func viewDidLoad(){
+        createViewModel.delegate = self
         storeManager.readTaskClosure(completion: { data in
             self.task.value = data
         })
+    }
+    
+    
+    func taskDidSaved(task: [Task]) {
+        self.task.value = task
     }
 }
