@@ -27,8 +27,6 @@ public final class StorageManager: NSObject{
     //MARK: CREATE
     public func createTask(id: Int16, title: String?, description: String?,
                            hourStart: Int16, hourEnd: Int16, day: Int16){
-        print("Task")
-        
         //MARK: Entity
         guard let taskEntityDescription = NSEntityDescription.entity(forEntityName: "Task", in: context) else { return }
         
@@ -43,7 +41,6 @@ public final class StorageManager: NSObject{
         
         //MARK: Save To DB
         appDelegate.saveContext()
-        print("saved", title, description)
     }
     
     //MARK: Read All
