@@ -136,6 +136,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let dataId = viewModel.task.value[indexPath.row].id
+            viewModel.deleteTaskWithIndex(id: dataId)
+            bindViewModel()
+        }
+    }
 }
 
 extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
@@ -143,7 +155,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM-yyyy"
-        let result = formatter.string(from: date)
+        _ = formatter.string(from: date)
     }
     
 }

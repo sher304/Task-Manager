@@ -27,6 +27,9 @@ class HomeViewModel: HomeViewDelegate{
         })
     }
     
+    func deleteTaskWithIndex(id: Int16){
+        storeManager.deleteById(id: id)
+    }
     
     func taskDidSaved(task: [Task]) {
         self.task.value = task
