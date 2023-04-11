@@ -7,18 +7,20 @@
 
 import Foundation
 
-protocol HomeViewDelegate: AnyObject {
+protocol HomeViewModelDelegate: AnyObject {
     func taskDidSaved(task: [Task])
     
 }
 
-class HomeViewModel: HomeViewDelegate{
+class HomeViewModel: HomeViewModelDelegate, DetailViewDelegate{
     
     var task = Dynamic([Task]())
     
     var storeManager = StorageManager.shared
     
     var createViewModel = CreateTaskViewModel.shared
+    
+    var detailViewModel = DetailViewModel.shared
     
     func viewDidLoad(){
         createViewModel.delegate = self
@@ -33,5 +35,9 @@ class HomeViewModel: HomeViewDelegate{
     
     func taskDidSaved(task: [Task]) {
         self.task.value = task
+    }
+    
+    func updatedId(id: Int16, delegate: DetailViewDelegate) {
+        detailViewModel.updatedId(id: id, delegate: self)
     }
 }
