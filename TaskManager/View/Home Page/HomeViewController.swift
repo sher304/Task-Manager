@@ -153,7 +153,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
-        viewModel.updatedId(id: viewModel.task.value[indexPath.row].id, delegate: viewModel)
+        viewModel.updatedId(id: viewModel.task.value[indexPath.row].id)
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

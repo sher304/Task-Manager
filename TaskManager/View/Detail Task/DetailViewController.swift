@@ -12,8 +12,6 @@ class DetailViewController: UIViewController {
     
     private lazy var detailViewModel = DetailViewModel.shared
     
-    weak var delegate: DetailViewModel?
-    
     private lazy var taskTitle: UITextField = {
         let label = UITextField()
         label.text = "Task Title"
@@ -74,7 +72,17 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupconstraints()
-        
+        bind()
+    }
+    
+    private func bind(){
+        detailViewModel.viewDidLoad()
+        detailViewModel.task.bind { task in
+            DispatchQueue.main.async {
+                self.taskTitle.text = task.first?.title
+                self.descriptionField.text = task.first?.descr
+            }
+        }
     }
     
     private func setupconstraints(){
@@ -132,6 +140,7 @@ class DetailViewController: UIViewController {
         if let day = components.day, let month = components.month,
            let hour = components.hour, let minute = components.minute{
             detailViewModel.updateTask(title: title, description: description, hour: hour, minute: minute, day: day)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

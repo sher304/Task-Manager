@@ -9,10 +9,11 @@ import Foundation
 
 protocol HomeViewModelDelegate: AnyObject {
     func taskDidSaved(task: [Task])
+    func updatedId(id: Int16)
     
 }
 
-class HomeViewModel: HomeViewModelDelegate, DetailViewDelegate{
+class HomeViewModel: HomeViewModelDelegate{
     
     var task = Dynamic([Task]())
     
@@ -23,6 +24,7 @@ class HomeViewModel: HomeViewModelDelegate, DetailViewDelegate{
     var detailViewModel = DetailViewModel.shared
     
     func viewDidLoad(){
+        detailViewModel.delegate = self
         createViewModel.delegate = self
         storeManager.readTaskClosure(completion: { data in
             self.task.value = data
@@ -37,7 +39,7 @@ class HomeViewModel: HomeViewModelDelegate, DetailViewDelegate{
         self.task.value = task
     }
     
-    func updatedId(id: Int16, delegate: DetailViewDelegate) {
-        detailViewModel.updatedId(id: id, delegate: self)
+    func updatedId(id: Int16){
+        self.detailViewModel.settedId = id
     }
 }
