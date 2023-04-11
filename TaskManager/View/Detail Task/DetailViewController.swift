@@ -74,7 +74,17 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupconstraints()
-        
+        bind()
+    }
+    
+    private func bind(){
+        detailViewModel.viewDidLoad()
+        detailViewModel.task.bind { dataTask in
+            DispatchQueue.main.async {
+                self.taskTitle.text = dataTask.first?.title
+                self.descriptionField.text = dataTask.first?.descr
+            }
+        }
     }
     
     private func setupconstraints(){
@@ -132,6 +142,7 @@ class DetailViewController: UIViewController {
         if let day = components.day, let month = components.month,
            let hour = components.hour, let minute = components.minute{
             detailViewModel.updateTask(title: title, description: description, hour: hour, minute: minute, day: day)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

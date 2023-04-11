@@ -60,6 +60,15 @@ public final class StorageManager: NSObject{
         }
     }
     
+    //MARK: READ TASK BY ID
+    public func readTaskClosure(id: Int16, completion: @escaping([Task]) -> Void) -> Task?{
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        do{
+            let tasks = try? context.fetch(fetchRequest) as? [Task]
+            return tasks?.first(where: {$0.id == id})
+        }
+    }
+    
     //MARK: Read Closure
     public func readTaskClosure(completion: @escaping([Task]) -> Void){
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
