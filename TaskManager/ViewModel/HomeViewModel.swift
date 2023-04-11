@@ -42,9 +42,4 @@ class HomeViewModel: HomeViewModelDelegate{
     func updatedId(id: Int16){
         self.detailViewModel.settedId = id
     }
-    
-//    func updatedId(id: Int16, delegate: DetailViewDelegate) {
-//        detailViewModel.updatedId(id: id, delegate: self)
-//    }
-    
 }

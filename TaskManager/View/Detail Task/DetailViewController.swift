@@ -12,8 +12,6 @@ class DetailViewController: UIViewController {
     
     private lazy var detailViewModel = DetailViewModel.shared
     
-    weak var delegate: DetailViewModel?
-    
     private lazy var taskTitle: UITextField = {
         let label = UITextField()
         label.text = "Task Title"
@@ -79,10 +77,10 @@ class DetailViewController: UIViewController {
     
     private func bind(){
         detailViewModel.viewDidLoad()
-        detailViewModel.task.bind { dataTask in
+        detailViewModel.task.bind { task in
             DispatchQueue.main.async {
-                self.taskTitle.text = dataTask.first?.title
-                self.descriptionField.text = dataTask.first?.descr
+                self.taskTitle.text = task.first?.title
+                self.descriptionField.text = task.first?.descr
             }
         }
     }
