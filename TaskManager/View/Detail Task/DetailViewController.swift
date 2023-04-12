@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     private lazy var taskTitle: UITextField = {
         let label = UITextField()
         label.text = "Task Title"
-        label.font = .systemFont(ofSize: 32, weight: .black)
+        label.font = .systemFont(ofSize: 28, weight: .black)
         label.textColor = .white
         return label
     }()
@@ -77,11 +77,10 @@ class DetailViewController: UIViewController {
     
     private func bind(){
         detailViewModel.viewDidLoad()
-        detailViewModel.task.bind { task in
-            DispatchQueue.main.async {
-                self.taskTitle.text = task.first?.title
-                self.descriptionField.text = task.first?.descr
-            }
+        let tasks = detailViewModel.task.value.first
+        DispatchQueue.main.async {
+            self.taskTitle.text = tasks?.title
+            self.descriptionField.text = tasks?.descr
         }
     }
     
@@ -137,7 +136,7 @@ class DetailViewController: UIViewController {
         
         
         let components = Calendar.current.dateComponents([.day, .month, .hour, .minute], from: .now)
-        if let day = components.day, let month = components.month,
+        if let day = components.day,
            let hour = components.hour, let minute = components.minute{
             detailViewModel.updateTask(title: title, description: description, hour: hour, minute: minute, day: day)
             self.navigationController?.popViewController(animated: true)
