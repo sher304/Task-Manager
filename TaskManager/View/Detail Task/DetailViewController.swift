@@ -81,6 +81,7 @@ class DetailViewController: UIViewController {
         DispatchQueue.main.async {
             self.taskTitle.text = tasks?.title
             self.descriptionField.text = tasks?.descr
+            
         }
     }
     
