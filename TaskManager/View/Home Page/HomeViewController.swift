@@ -72,7 +72,7 @@ class HomeViewController: UIViewController{
     
     private func bindViewModel(){
         viewModel.viewDidLoad()
-        viewModel.task.bind { _ in
+        viewModel.task.bind { task in
             DispatchQueue.main.async {
                 self.tasksTable.reloadData()
             }

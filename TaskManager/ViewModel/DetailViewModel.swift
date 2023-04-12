@@ -25,7 +25,6 @@ class DetailViewModel{
     
     func viewDidLoad(){
         storageManager.readTaskClosure(id: settedId ?? 0) { task in
-            print(task)
             self.task.value = [task]
         }
     }
