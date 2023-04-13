@@ -28,7 +28,6 @@ class HomeViewModel: HomeViewModelDelegate{
         createViewModel.delegate = self
         storeManager.readTaskClosure(completion: { data in
             self.task.value = data
-            print(data.first?.hourStart, data.first?.hourEnd)
         })
     }
     
@@ -46,19 +45,25 @@ class HomeViewModel: HomeViewModelDelegate{
     
     func getDateToValidate(day: String){
         let arrDay = Array(day)
-        guard let day = Int16(String(arrDay[0...1])) else { return }
-        guard let month = Int16(String(arrDay[3...4])) else { return}
-        validateDay(day: day, month: month)
+        let day = Int16(String(arrDay[...1])) ?? 0
+        let month = String(arrDay[3...])
+        changeTaskDataDay(day: day, month: month)
     }
     
-    func validateDay(day: Int16, month: Int16){
-        self.task.value.first { elements in
-            if elements.day == day && elements.hourEnd == month{
-                print("SUCCESS")
+    func changeTaskDataDay(day: Int16, month: String){
+        for data in self.task.value{
+            var date = Array(String(data.day))
+            if date.count == 3{
+                date.insert("0", at: 0)
+                print(date)
+                let month = String(date[0...1])
+                let day = String(date[2...])
+                print(day)
             }else{
-                print("FAILURE")
+                
             }
+
+//            print(day ?? 0, month ?? 0, "validate")
         }
     }
-    
 }
