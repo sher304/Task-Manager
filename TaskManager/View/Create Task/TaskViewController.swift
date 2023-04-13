@@ -141,10 +141,23 @@ class TaskViewController: UIViewController {
         guard let description = descriptionField.text else { return }
         
         
-        let components = Calendar.current.dateComponents([.day, .month, .hour, .minute], from: .now)
-        if let day = components.day, let month = components.month,
-           let hour = components.hour, let minute = components.minute{
-            createTaskViewModel.createTask(title, description, hour, minute, "\(day)\(month)")
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss +0000"
+
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "hh:mmMMdd"
+        
+        if let date = dateFormatterGet.date(from: "\(self.datePicker.date)") {
+            let dateData = Array(dateFormatterPrint.string(from: date))
+            let hour = Int(String(dateData[0...1])) ?? 0
+            let minute = Int(String(dateData[3...4])) ?? 0
+            let month = String(dateData[5...6])
+            let day = String(dateData[7...])
+            createTaskViewModel.createTask(title, description, hour, minute, "\(month)\(day)")
+        } else {
+           print("There was an error decoding the string")
         }
+       
     }
 }

@@ -81,12 +81,6 @@ class DetailViewController: UIViewController {
         DispatchQueue.main.async {
             self.taskTitle.text = tasks?.title
             self.descriptionField.text = tasks?.descr
-            
-            let components = Calendar.current.dateComponents([.day, .month, .hour, .minute], from: .now)
-            if let day = components.day,
-               let hour = components.hour, let minute = components.minute{
-                
-            }
         }
     }
     
