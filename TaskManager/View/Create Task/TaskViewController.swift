@@ -144,7 +144,7 @@ class TaskViewController: UIViewController {
         let components = Calendar.current.dateComponents([.day, .month, .hour, .minute], from: .now)
         if let day = components.day, let month = components.month,
            let hour = components.hour, let minute = components.minute{
-            createTaskViewModel.createTask(title, description, hour, minute, day)
+            createTaskViewModel.createTask(title, description, hour, minute, "\(day)\(month)")
         }
     }
 }

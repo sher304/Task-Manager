@@ -162,9 +162,9 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM-yyyy"
-        _ = formatter.string(from: date)
+        formatter.dateFormat = "dd/MM"
+        let resultDay = formatter.string(from: date)
+        viewModel.getDateToValidate(day: resultDay)
     }
-    
 }
 
