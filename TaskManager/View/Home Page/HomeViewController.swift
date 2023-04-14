@@ -52,6 +52,8 @@ class HomeViewController: UIViewController{
         calendarV.headerHeight = 0
         calendarV.delegate = self
         calendarV.dataSource = self
+        calendarV.appearance.todayColor = .white
+        calendarV.appearance.titleTodayColor = .black
         return calendarV
     }()
     
@@ -164,6 +166,7 @@ extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM"
         let resultDay = formatter.string(from: date)
+        bindViewModel()
         viewModel.getDateToValidate(day: resultDay)
     }
 }
