@@ -46,24 +46,33 @@ class HomeViewModel: HomeViewModelDelegate{
     func getDateToValidate(day: String){
         let arrDay = Array(day)
         let day = Int16(String(arrDay[...1])) ?? 0
-        let month = String(arrDay[3...])
-        changeTaskDataDay(day: day, month: month)
+        let month = Int16(String(arrDay[3...])) ?? 0
+        filterTaskDay(day: day, month: month)
     }
     
-    func changeTaskDataDay(day: Int16, month: String){
+    func filterTaskDay(day: Int16, month: Int16){
         for data in self.task.value{
             var date = Array(String(data.day))
-            if date.count == 3{
-                date.insert("0", at: 0)
-                print(date)
-                let month = String(date[0...1])
-                let day = String(date[2...])
-                print(day)
+            let monthData = Int16(String(date[0])) ?? 0
+            let dayData = Int16(String(date[1...])) ?? 0
+            if day == dayData && month == monthData{
+                print("same")
+                let sameData = Int16("\(month)\(day)") ?? 0
+                let filtredId = self.task.value.first(where: {$0.day == sameData})?.id ?? 0
+                readFiltredTask(id: filtredId)
             }else{
-                
+                readFiltredTask(id: 0)
             }
-
-//            print(day ?? 0, month ?? 0, "validate")
         }
     }
+    
+    func readFiltredTask(id: Int16){
+        storeManager.readTaskClosure(id: id) { taskData in
+            self.task.value = [taskData]
+        }
+    }
+    
+    
+    
 }
+
