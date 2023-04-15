@@ -100,7 +100,11 @@ class DetailViewController: UIViewController {
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
             make.top.equalTo(titleContainer.snp.bottom)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-250)
+            if view.frame.height < 680{
+                make.bottom.equalTo(view.frame.height / 2).offset(-80)
+            }else{
+                make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-130)
+            }
         }
         
         

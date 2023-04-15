@@ -92,7 +92,11 @@ class TaskViewController: UIViewController {
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(80)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-130)
+            if view.frame.height < 680{
+                make.bottom.equalTo(view.frame.height / 2).offset(-80)
+            }else{
+                make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-130)
+            }
         }
         
         containerOFTask.addSubview(createNewTaskBG)
