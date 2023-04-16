@@ -12,7 +12,7 @@ class TabViewController: UITabBarController {
     private lazy var createNewTaskButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .black
-        button.frame = CGRect(x: (self.view.frame.width / 2) + 90, y: -10, width: 60, height: 60)
+        button.frame = CGRect(x: (self.view.frame.width / 2), y: -10, width: 60, height: 60)
         button.layer.cornerRadius = 21
         button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.tintColor = .white
@@ -21,17 +21,6 @@ class TabViewController: UITabBarController {
         return button
     }()
     
-    private lazy var middleButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.frame = CGRect(x: (self.view.frame.width / 2) - 30, y: -10, width: 60, height: 60)
-        button.setImage(UIImage(systemName: "calendar"), for: .normal)
-        button.contentMode = .scaleToFill
-        button.addTarget(self, action: #selector(middleButtonTapped), for: .touchUpInside)
-        button.tintColor = .gray
-        return button
-    }()
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         generateTabBar()
@@ -40,9 +29,8 @@ class TabViewController: UITabBarController {
     
     private func generateTabBar(){
         viewControllers = [
-            generateVC(vc: HomeViewController(), image: UIImage(systemName: "house.fill"), title: "Home"),
-            generateVC(vc: CalendarViewController(), image: UIImage(), title: ""),
-            generateVC(vc: TaskViewController(), image: UIImage(), title: "")
+            generateVC(vc: HomeViewController(), image: UIImage(systemName: "house.fill"), title: ""),
+            generateVC(vc: TaskViewController(), image: UIImage(systemName: "plus"), title: "")
         ]
     }
     
@@ -53,37 +41,26 @@ class TabViewController: UITabBarController {
     }
     
     private func setTabBarAppearance(){
-        let positionY: CGFloat = -14
-        let positionX: CGFloat = 55
-        let width = tabBar.bounds.width - positionX * 2
-        let height = tabBar.bounds.height - positionY * 2
+        
+        let positionY: CGFloat = 14
+        let positionX: CGFloat = 10
         
         let roundLayer = CAShapeLayer()
         
-        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionX, y: positionY - 5, width: width, height: height), cornerRadius: height / 2)
+        //MARK: TO Draw Tapbar
         
-        roundLayer.path = bezierPath.cgPath
+        //MARK: Position Y from top of screen to top of tabBar
+        let bazierPath = UIBezierPath(roundedRect: CGRect(x: positionX, y: tabBar.bounds.minX - positionY, width: tabBar.bounds.width - positionX * 2, height: tabBar.bounds.height + positionY * 2), cornerRadius: tabBar.bounds.height / 2)
+        
+        roundLayer.path = bazierPath.cgPath
+        roundLayer.fillColor = UIColor.systemGray6.cgColor
         
         tabBar.layer.insertSublayer(roundLayer, at: 0)
-        tabBar.itemWidth = width / 5
-        roundLayer.fillColor = UIColor(red: 248/255, green: 248/255, blue: 250/255, alpha: 1).cgColor
-        tabBar.itemSpacing = 50
-        tabBar.itemPositioning = .centered
-        tabBar.tintColor = .black
-        tabBar.unselectedItemTintColor = .gray
-        tabBar.addSubview(createNewTaskButton)
-        tabBar.addSubview(middleButton)
-    }
-    
-    //MARK: Middle Button Index
-    @objc func middleButtonTapped(){
-        selectedIndex = 1
-        
     }
     
     //MARK: Create Button Index
     @objc func createButtonTapped(){
-        selectedIndex = 2
+        selectedIndex = 1
     }
     
 }
