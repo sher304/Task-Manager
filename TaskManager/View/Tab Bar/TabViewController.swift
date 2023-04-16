@@ -41,21 +41,20 @@ class TabViewController: UITabBarController {
     }
     
     private func setTabBarAppearance(){
-        
-        let positionY: CGFloat = 14
-        let positionX: CGFloat = 10
-        
+        //MARK: TO Draw Tapbar
         let roundLayer = CAShapeLayer()
         
-        //MARK: TO Draw Tapbar
-        
         //MARK: Position Y from top of screen to top of tabBar
-        let bazierPath = UIBezierPath(roundedRect: CGRect(x: positionX, y: tabBar.bounds.minX - positionY, width: tabBar.bounds.width - positionX * 2, height: tabBar.bounds.height + positionY * 2), cornerRadius: tabBar.bounds.height / 2)
+        let bazierPath = UIBezierPath(roundedRect: CGRect(x: tabBar.bounds.minX + 92, y: tabBar.bounds.minY - 5, width: tabBar.bounds.width / 2, height: tabBar.bounds.height), cornerRadius: tabBar.bounds.height)
         
         roundLayer.path = bazierPath.cgPath
-        roundLayer.fillColor = UIColor.systemGray6.cgColor
         
         tabBar.layer.insertSublayer(roundLayer, at: 0)
+        roundLayer.fillColor = UIColor.systemGray6.cgColor
+        
+        tabBar.itemPositioning = .centered
+        tabBar.tintColor = .black
+        
     }
     
     //MARK: Create Button Index
