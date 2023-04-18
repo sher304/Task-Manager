@@ -54,7 +54,6 @@ class TabViewController: UITabBarController {
         
         tabBar.itemPositioning = .centered
         tabBar.tintColor = .black
-        
     }
     
     //MARK: Create Button Index

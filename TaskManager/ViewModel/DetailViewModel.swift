@@ -34,7 +34,6 @@ class DetailViewModel{
     public func updateTask(title: String, description: String, hour: Int, minute: Int, day: Int){
         guard let settedId = settedId else { return }
         storageManager.updateTask(id: settedId, newTitle: title, newDesciption: description, newHourStart: Int16(hour), newHourEnd: Int16(minute), newDay: Int16(day))
-        
         delegate?.taskDidSaved(task: storageManager.readTasks() ?? [])
         
     }

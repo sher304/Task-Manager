@@ -52,7 +52,7 @@ class HomeViewModel: HomeViewModelDelegate{
     
     func filterTaskDay(day: Int16, month: Int16){
         for data in self.task.value{
-            var date = Array(String(data.day))
+            let date = Array(String(data.day))
             let monthData = Int16(String(date[0])) ?? 0
             let dayData = Int16(String(date[1...])) ?? 0
             if day == dayData && month == monthData{

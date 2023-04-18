@@ -78,9 +78,19 @@ class DetailViewController: UIViewController {
     private func bind(){
         detailViewModel.viewDidLoad()
         let tasks = detailViewModel.task.value.first
+        let dateArr = Array(tasks?.day.description ?? "")
+        let month = Int(String(dateArr[0]))
+        let day = Int(String(dateArr[1...]))
         DispatchQueue.main.async {
             self.taskTitle.text = tasks?.title
             self.descriptionField.text = tasks?.descr
+            let calendar = Calendar.current
+            var components = DateComponents()
+            components.day = day
+            components.month = month
+            components.hour = Int(tasks?.hourStart ?? 0)
+            components.minute = Int(tasks?.hourEnd ?? 0)
+            self.datePicker.setDate(calendar.date(from: components)!, animated: true)
         }
     }
     
