@@ -78,9 +78,8 @@ class DetailViewController: UIViewController {
     private func bind(){
         detailViewModel.viewDidLoad()
         let tasks = detailViewModel.task.value.first
-        let dateArr = Array(tasks?.day.description ?? "")
-        let month = Int(String(dateArr[0]))
-        let day = Int(String(dateArr[1...]))
+        let month = getMonth(month: tasks?.day ?? 0)
+        let day = getDay(day: tasks?.day ?? 0)
         DispatchQueue.main.async {
             self.taskTitle.text = tasks?.title
             self.descriptionField.text = tasks?.descr
@@ -88,11 +87,27 @@ class DetailViewController: UIViewController {
             var components = DateComponents()
             components.day = day
             components.month = month
+            print(tasks?.hourStart, tasks?.hourEnd)
             components.hour = Int(tasks?.hourStart ?? 0)
             components.minute = Int(tasks?.hourEnd ?? 0)
+            components.year = 2023
             self.datePicker.setDate(calendar.date(from: components)!, animated: true)
         }
     }
+    
+    private func getMonth(month: Int16) -> Int{
+        let dateArr = Array(month.description)
+        let month = Int(String(dateArr[0])) ?? 0
+        return month
+    }
+    
+    private func getDay(day: Int16) -> Int{
+        let dateArr = Array(day.description)
+        let day = Int(String(dateArr[1...])) ?? 0
+        print(day)
+        return day
+    }
+    
     
     private func setupconstraints(){
         view.backgroundColor = .white
